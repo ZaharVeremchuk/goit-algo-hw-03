@@ -1,7 +1,5 @@
 import turtle
 
-
-
 def koch_curve(t, order, size):
     if order == 0:
         t.forward(size)
@@ -10,17 +8,19 @@ def koch_curve(t, order, size):
             koch_curve(t, order - 1, size / 3)
             t.left(angle)
 
-def draw_koch_curve(order, size=700):
+def draw_koch_curve(order, size=300):
     window = turtle.Screen()
     window.bgcolor("white")
 
     t = turtle.Turtle()
-    t.speed(10)
+    t.speed(0)
     t.penup()
-    t.goto(-size / 2, 0)
+    t.goto(-size / 2, -size * 0.433)
     t.pendown()
 
-    koch_curve(t, order, size)
+    for _ in range(3):  # Цикл для малювання трьох сторін сніжинки
+        koch_curve(t, order, size)
+        t.right(120)
     window.mainloop()
 
 
